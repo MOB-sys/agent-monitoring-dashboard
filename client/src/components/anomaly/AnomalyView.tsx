@@ -207,7 +207,8 @@ export const AnomalyView = memo(function AnomalyView() {
               No anomaly data available
             </div>
           ) : (
-            <ResponsiveContainer width="100%" height={280}>
+            <div className="h-[220px] md:h-[280px]">
+            <ResponsiveContainer width="100%" height="100%">
               <BarChart data={metricCounts}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
                 <XAxis
@@ -246,6 +247,7 @@ export const AnomalyView = memo(function AnomalyView() {
                 <Bar dataKey="low" name="Low" fill={SEVERITY_COLORS.low} stackId="stack" radius={[4, 4, 0, 0]} isAnimationActive={false} />
               </BarChart>
             </ResponsiveContainer>
+            </div>
           )}
         </div>
 
@@ -261,7 +263,8 @@ export const AnomalyView = memo(function AnomalyView() {
             </div>
           ) : (
             <>
-              <ResponsiveContainer width="100%" height={240}>
+              <div className="h-[200px] md:h-[240px]">
+              <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
                   <Pie
                     data={severityDistribution}
@@ -291,6 +294,7 @@ export const AnomalyView = memo(function AnomalyView() {
                   />
                 </PieChart>
               </ResponsiveContainer>
+              </div>
               <div className="flex items-center justify-center gap-5 mt-2">
                 {severityDistribution.map((entry) => (
                   <div key={entry.name} className="flex items-center gap-1.5">

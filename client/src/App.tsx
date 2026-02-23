@@ -12,6 +12,7 @@ import { CostDashboard } from './components/cost/CostDashboard';
 import { AnomalyView } from './components/anomaly/AnomalyView';
 import { AuditLog } from './components/audit/AuditLog';
 import { OrchestrationView } from './components/orchestration/OrchestrationView';
+import { BottomTabBar } from './components/layout/BottomTabBar';
 
 function AuthenticatedApp() {
   useSocket();
@@ -22,7 +23,7 @@ function AuthenticatedApp() {
       <Sidebar />
       <div className="flex-1 flex flex-col overflow-hidden">
         <Header />
-        <main className="flex-1 overflow-auto p-6">
+        <main className="flex-1 overflow-auto p-4 pb-20 md:p-6 md:pb-6">
           {currentView === 'overview' && <OverviewDashboard />}
           {currentView === 'agents' && <AgentDetailView />}
           {currentView === 'traces' && <TraceDetailView />}
@@ -34,6 +35,7 @@ function AuthenticatedApp() {
           {currentView === 'orchestration' && <OrchestrationView />}
         </main>
       </div>
+      <BottomTabBar />
     </div>
   );
 }

@@ -34,7 +34,7 @@ export const SuccessRateGauge = memo(function SuccessRateGauge() {
         <p className="text-xs text-slate-400">System Health</p>
       </div>
 
-      <div className="relative" style={{ height: 220 }}>
+      <div className="relative h-[180px] md:h-[220px]">
         <ResponsiveContainer width="100%" height="100%">
           <RadialBarChart
             cx="50%"

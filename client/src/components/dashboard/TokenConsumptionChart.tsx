@@ -52,11 +52,12 @@ export const TokenConsumptionChart = memo(function TokenConsumptionChart() {
       </div>
 
       {data.length === 0 ? (
-        <div className="flex items-center justify-center h-[300px] text-slate-500 text-sm">
+        <div className="flex items-center justify-center h-[200px] md:h-[300px] text-slate-500 text-sm">
           No token data available
         </div>
       ) : (
-        <ResponsiveContainer width="100%" height={300}>
+        <div className="h-[200px] md:h-[300px]">
+        <ResponsiveContainer width="100%" height="100%">
           <BarChart data={data}>
             <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
             <XAxis
@@ -89,6 +90,7 @@ export const TokenConsumptionChart = memo(function TokenConsumptionChart() {
             />
           </BarChart>
         </ResponsiveContainer>
+        </div>
       )}
     </div>
   );

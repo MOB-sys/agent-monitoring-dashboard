@@ -248,7 +248,7 @@ export const AuditLog = memo(function AuditLog() {
           </div>
         ) : (
           <div className="max-h-[500px] overflow-y-auto">
-            <table className="w-full text-left">
+            <table className="w-full text-left min-w-[640px]">
               <thead className="sticky top-0 bg-slate-900 z-10">
                 <tr className="border-b border-slate-800">
                   <th className="pb-3 text-xs font-medium text-slate-400 uppercase tracking-wider">Time</th>

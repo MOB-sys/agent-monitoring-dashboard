@@ -135,9 +135,9 @@ export function AgentDetailView() {
   };
 
   return (
-    <div className="flex h-full">
+    <div className="flex flex-col md:flex-row h-full">
       {/* Left panel: Agent list */}
-      <div className="w-80 border-r border-slate-800 overflow-y-auto flex-shrink-0">
+      <div className="w-full md:w-80 max-h-[40vh] md:max-h-none border-b md:border-b-0 md:border-r border-slate-800 overflow-y-auto flex-shrink-0">
         <div className="p-4 border-b border-slate-800">
           <h2 className="text-sm font-semibold text-slate-100">Agents</h2>
           <p className="text-xs text-slate-500">{agents.length} registered</p>
@@ -179,7 +179,7 @@ export function AgentDetailView() {
             <p className="text-sm">Select an agent to view details</p>
           </div>
         ) : (
-          <div className="p-6 space-y-6">
+          <div className="p-4 md:p-6 space-y-6">
             {/* Agent header */}
             <div className="flex items-start gap-4">
               <div className="p-3 rounded-lg bg-blue-400/10">

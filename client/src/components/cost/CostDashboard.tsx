@@ -232,7 +232,8 @@ export const CostDashboard = memo(function CostDashboard() {
             </div>
           ) : (
             <>
-              <ResponsiveContainer width="100%" height={240}>
+              <div className="h-[200px] md:h-[240px]">
+            <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
                   <Pie
                     data={pieData}
@@ -251,6 +252,7 @@ export const CostDashboard = memo(function CostDashboard() {
                   <Tooltip content={<PieTooltip />} />
                 </PieChart>
               </ResponsiveContainer>
+              </div>
               <div className="flex items-center justify-center gap-5 mt-2">
                 {pieData.map((entry) => (
                   <div key={entry.name} className="flex items-center gap-1.5">
@@ -279,7 +281,8 @@ export const CostDashboard = memo(function CostDashboard() {
               No agent data available
             </div>
           ) : (
-            <ResponsiveContainer width="100%" height={280}>
+            <div className="h-[220px] md:h-[280px]">
+            <ResponsiveContainer width="100%" height="100%">
               <BarChart
                 data={sortedAgents}
                 layout="vertical"
@@ -309,6 +312,7 @@ export const CostDashboard = memo(function CostDashboard() {
                 </Bar>
               </BarChart>
             </ResponsiveContainer>
+            </div>
           )}
         </div>
       </div>
@@ -324,7 +328,8 @@ export const CostDashboard = memo(function CostDashboard() {
             No forecast data available
           </div>
         ) : (
-          <ResponsiveContainer width="100%" height={300}>
+          <div className="h-[220px] md:h-[300px]">
+          <ResponsiveContainer width="100%" height="100%">
             <AreaChart data={forecast}>
               <defs>
                 <linearGradient id="forecastProjected" x1="0" y1="0" x2="0" y2="1">
@@ -403,6 +408,7 @@ export const CostDashboard = memo(function CostDashboard() {
               />
             </AreaChart>
           </ResponsiveContainer>
+          </div>
         )}
       </div>
 
@@ -418,7 +424,7 @@ export const CostDashboard = memo(function CostDashboard() {
           </div>
         ) : (
           <div className="overflow-x-auto">
-            <table className="w-full text-left">
+            <table className="w-full text-left min-w-[700px]">
               <thead>
                 <tr className="border-b border-slate-800">
                   <th className="pb-3 text-xs font-medium text-slate-400 uppercase tracking-wider">Agent</th>

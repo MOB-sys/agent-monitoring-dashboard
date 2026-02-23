@@ -21,9 +21,9 @@ export const ErrorMonitor = memo(function ErrorMonitor() {
           No errors recorded
         </div>
       ) : (
-        <div className="flex items-start gap-4">
+        <div className="flex flex-col sm:flex-row items-start gap-4">
           {/* Pie chart */}
-          <div className="flex-shrink-0" style={{ width: '40%', height: 200 }}>
+          <div className="w-full sm:w-[40%] h-[160px] sm:h-[200px] flex-shrink-0">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
                 <Pie

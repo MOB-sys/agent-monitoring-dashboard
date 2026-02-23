@@ -376,7 +376,7 @@ export function IntegrationSettings() {
 
       {/* Notification Channels Section */}
       <div className="bg-slate-900 rounded-xl border border-slate-800 p-6">
-        <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center justify-between mb-6 flex-wrap gap-3">
           <div className="flex items-center gap-3">
             <Bell className="w-5 h-5 text-purple-400" />
             <h2 className="text-lg font-semibold text-slate-100">Notification Channels</h2>
@@ -402,7 +402,7 @@ export function IntegrationSettings() {
             <h3 className="text-sm font-medium text-slate-200">
               {editingChannelId ? 'Edit Channel' : 'New Notification Channel'}
             </h3>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label className="block text-xs text-slate-400 mb-1">Name</label>
                 <input

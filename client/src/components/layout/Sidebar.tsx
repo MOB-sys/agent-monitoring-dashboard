@@ -25,7 +25,7 @@ export function Sidebar() {
   const firingCount = alertEvents.filter((e) => e.status === 'firing').length;
 
   return (
-    <aside className="w-16 bg-slate-900 border-r border-slate-800 flex flex-col items-center py-4 justify-between">
+    <aside className="hidden md:flex w-16 bg-slate-900 border-r border-slate-800 flex-col items-center py-4 justify-between">
       <nav className="flex flex-col items-center gap-2">
         {allNavItems
           .filter((item) => {

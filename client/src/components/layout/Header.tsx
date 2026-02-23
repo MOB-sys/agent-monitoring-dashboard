@@ -38,18 +38,18 @@ export function Header() {
   };
 
   return (
-    <header className="bg-slate-900 border-b border-slate-800 h-14 px-6 flex items-center justify-between">
-      <div className="flex items-center gap-3">
+    <header className="bg-slate-900 border-b border-slate-800 h-14 px-3 md:px-6 flex items-center justify-between">
+      <div className="flex items-center gap-2 md:gap-3">
         <Activity className="w-5 h-5 text-blue-400" />
-        <h1 className="text-lg font-semibold text-slate-100">AI Agent Monitor</h1>
+        <h1 className="hidden sm:block text-lg font-semibold text-slate-100">AI Agent Monitor</h1>
       </div>
 
-      <div className="flex items-center gap-2 text-sm text-slate-400">
+      <div className="hidden md:flex items-center gap-2 text-sm text-slate-400">
         <span className="text-slate-600">/</span>
         <span className="text-slate-200">{viewLabels[currentView]}</span>
       </div>
 
-      <div className="flex items-center gap-6">
+      <div className="flex items-center gap-3 md:gap-6">
         {recentAnomalyCount > 0 && (
           <button
             onClick={() => setCurrentView('anomaly')}
@@ -57,7 +57,7 @@ export function Header() {
             title="Recent anomalies"
           >
             <div className="w-2 h-2 rounded-full bg-orange-400 animate-pulse" />
-            <span className="text-xs font-medium">{recentAnomalyCount} anomal{recentAnomalyCount === 1 ? 'y' : 'ies'}</span>
+            <span className="hidden sm:inline text-xs font-medium">{recentAnomalyCount} anomal{recentAnomalyCount === 1 ? 'y' : 'ies'}</span>
           </button>
         )}
 
@@ -78,28 +78,28 @@ export function Header() {
           {connected ? (
             <>
               <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <Wifi className="w-4 h-4 text-emerald-400" />
-              <span className="text-emerald-400">Connected</span>
+              <Wifi className="hidden md:inline w-4 h-4 text-emerald-400" />
+              <span className="hidden md:inline text-emerald-400">Connected</span>
             </>
           ) : (
             <>
               <div className="w-2 h-2 rounded-full bg-red-400 animate-pulse" />
-              <WifiOff className="w-4 h-4 text-red-400" />
-              <span className="text-red-400">Disconnected</span>
+              <WifiOff className="hidden md:inline w-4 h-4 text-red-400" />
+              <span className="hidden md:inline text-red-400">Disconnected</span>
             </>
           )}
         </div>
 
-        <div className="text-sm text-slate-400 font-mono">
+        <div className="hidden md:block text-sm text-slate-400 font-mono">
           {currentTime.toLocaleTimeString('en-US', { hour12: false })}
         </div>
 
         {isAuthenticated && user && (
-          <div className="flex items-center gap-3 pl-3 border-l border-slate-800">
+          <div className="flex items-center gap-2 md:gap-3 pl-2 md:pl-3 border-l border-slate-800">
             <div className="w-7 h-7 rounded-full bg-blue-500/20 flex items-center justify-center">
               <span className="text-xs font-bold text-blue-400">{user.name.charAt(0).toUpperCase()}</span>
             </div>
-            <div className="flex flex-col">
+            <div className="hidden md:flex flex-col">
               <span className="text-sm text-slate-200 leading-tight">{user.username}</span>
               <span className={`text-[10px] font-medium uppercase leading-tight ${
                 user.role === 'admin'

@@ -186,7 +186,7 @@ export function AlertPanel() {
             <h3 className="text-sm font-medium text-slate-200">
               {editingId ? 'Edit Rule' : 'New Alert Rule'}
             </h3>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label className="block text-xs text-slate-400 mb-1">Name</label>
                 <input
@@ -323,13 +323,13 @@ export function AlertPanel() {
                 <div className="flex items-center gap-2 flex-shrink-0">
                   <button
                     onClick={() => startEdit(rule)}
-                    className="p-1.5 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800 transition-colors"
+                    className="p-2.5 md:p-1.5 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800 transition-colors"
                   >
                     <Edit2 className="w-4 h-4" />
                   </button>
                   <button
                     onClick={() => handleDelete(rule.id)}
-                    className="p-1.5 rounded-lg text-slate-400 hover:text-red-400 hover:bg-slate-800 transition-colors"
+                    className="p-2.5 md:p-1.5 rounded-lg text-slate-400 hover:text-red-400 hover:bg-slate-800 transition-colors"
                   >
                     <Trash2 className="w-4 h-4" />
                   </button>

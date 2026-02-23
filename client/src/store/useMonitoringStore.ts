@@ -23,6 +23,9 @@ interface MonitoringState {
 
   // Orchestration
   orchestration: OrchestrationState | null;
+
+  // Mobile UI
+  moreMenuOpen: boolean;
 }
 
 interface MonitoringActions {
@@ -48,6 +51,9 @@ interface MonitoringActions {
 
   // Orchestration
   updateOrchestration: (state: OrchestrationState) => void;
+
+  // Mobile UI
+  setMoreMenuOpen: (open: boolean) => void;
 }
 
 export const useMonitoringStore = create<MonitoringState & MonitoringActions>((set) => ({
@@ -74,6 +80,7 @@ export const useMonitoringStore = create<MonitoringState & MonitoringActions>((s
 
   anomalies: [],
   orchestration: null,
+  moreMenuOpen: false,
 
   setConnected: (connected) => set({ connected }),
   updateMetrics: (metrics) => set({ metrics }),
@@ -86,7 +93,7 @@ export const useMonitoringStore = create<MonitoringState & MonitoringActions>((s
   updateTrace: (trace) => set((state) => ({
     traces: state.traces.map((t) => (t.id === trace.id ? trace : t)),
   })),
-  setCurrentView: (currentView) => set({ currentView, selectedAgentId: null, selectedTraceId: null }),
+  setCurrentView: (currentView) => set({ currentView, selectedAgentId: null, selectedTraceId: null, moreMenuOpen: false }),
   setSelectedAgentId: (selectedAgentId) => set({ selectedAgentId }),
   setSelectedTraceId: (selectedTraceId) => set({ selectedTraceId }),
   setAlertRules: (alertRules) => set({ alertRules }),
@@ -112,4 +119,5 @@ export const useMonitoringStore = create<MonitoringState & MonitoringActions>((s
     anomalies: [event, ...state.anomalies].slice(0, 200),
   })),
   updateOrchestration: (orchestration) => set({ orchestration }),
+  setMoreMenuOpen: (moreMenuOpen) => set({ moreMenuOpen }),
 }));

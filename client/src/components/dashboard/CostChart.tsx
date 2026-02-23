@@ -37,11 +37,12 @@ export const CostChart = memo(function CostChart() {
       </div>
 
       {data.length === 0 ? (
-        <div className="flex items-center justify-center h-[300px] text-slate-500 text-sm">
+        <div className="flex items-center justify-center h-[200px] md:h-[300px] text-slate-500 text-sm">
           No cost data available
         </div>
       ) : (
-        <ResponsiveContainer width="100%" height={300}>
+        <div className="h-[200px] md:h-[300px]">
+        <ResponsiveContainer width="100%" height="100%">
           <AreaChart data={data}>
             <defs>
               <linearGradient id="costGradient" x1="0" y1="0" x2="0" y2="1">
@@ -73,6 +74,7 @@ export const CostChart = memo(function CostChart() {
             />
           </AreaChart>
         </ResponsiveContainer>
+        </div>
       )}
     </div>
   );

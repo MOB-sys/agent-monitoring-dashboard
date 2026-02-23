@@ -151,9 +151,9 @@ export function TraceDetailView() {
   };
 
   return (
-    <div className="flex h-full">
+    <div className="flex flex-col md:flex-row h-full">
       {/* Left panel: Trace list */}
-      <div className="w-96 border-r border-slate-800 overflow-y-auto flex-shrink-0">
+      <div className="w-full md:w-96 max-h-[40vh] md:max-h-none border-b md:border-b-0 md:border-r border-slate-800 overflow-y-auto flex-shrink-0">
         <div className="p-4 border-b border-slate-800">
           <h2 className="text-sm font-semibold text-slate-100">Traces</h2>
           <p className="text-xs text-slate-500">{traces.length} recorded</p>
@@ -213,7 +213,7 @@ export function TraceDetailView() {
             <p className="text-sm">Select a trace to view details</p>
           </div>
         ) : (
-          <div className="p-6 space-y-6">
+          <div className="p-4 md:p-6 space-y-6">
             {/* Trace header */}
             <div>
               <div className="flex items-center gap-3 mb-2">

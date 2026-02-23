@@ -10,7 +10,7 @@ import { ActivityLog } from './ActivityLog';
 
 export const OverviewDashboard = memo(function OverviewDashboard() {
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 md:space-y-6">
       {/* Row 1: Summary Cards */}
       <SummaryCards />
 

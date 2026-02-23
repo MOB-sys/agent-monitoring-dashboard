@@ -45,7 +45,7 @@ function NodeCard({ node }: { node: AgentNode }) {
 
   return (
     <div
-      className={`w-36 h-24 bg-slate-800 rounded-xl border-2 ${borderColor} flex flex-col items-center justify-center px-2 transition-colors`}
+      className={`w-28 h-20 md:w-36 md:h-24 bg-slate-800 rounded-xl border-2 ${borderColor} flex flex-col items-center justify-center px-2 transition-colors`}
     >
       <div className="flex items-center gap-1.5 mb-1">
         <div className={`w-2 h-2 rounded-full ${statusDot}`} />
@@ -55,7 +55,7 @@ function NodeCard({ node }: { node: AgentNode }) {
         {node.name}
       </span>
       {node.currentTask && (
-        <span className="text-[10px] text-slate-500 mt-1 truncate max-w-full text-center">
+        <span className="text-[11px] text-slate-500 mt-1 truncate max-w-full text-center">
           {node.currentTask}
         </span>
       )}
@@ -288,6 +288,7 @@ export const OrchestrationView = memo(function OrchestrationView() {
               </div>
             ))}
           </div>
+          <p className="text-center mt-2 text-[11px] text-slate-600 md:hidden">Swipe to scroll horizontally</p>
           <div className="text-center mt-4 text-xs text-slate-500">
             Waiting for orchestration data...
           </div>
@@ -351,6 +352,8 @@ export const OrchestrationView = memo(function OrchestrationView() {
             </div>
           ))}
         </div>
+
+        <p className="text-center mt-2 text-[11px] text-slate-600 md:hidden">Swipe to scroll horizontally</p>
 
         {/* Feedback loop indicator */}
         {feedbackEdge && (
