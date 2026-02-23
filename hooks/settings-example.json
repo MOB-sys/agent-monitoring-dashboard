@@ -1,0 +1,26 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash /Users/lastdance/Desktop/workspace/agent-monitoring-dashboard/hooks/monitor-hook.sh"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash /Users/lastdance/Desktop/workspace/agent-monitoring-dashboard/hooks/monitor-stop.sh"
+          }
+        ]
+      }
+    ]
+  }
+}

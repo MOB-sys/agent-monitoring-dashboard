@@ -183,12 +183,41 @@ export class LiveDataManager {
     const state = this.agents.get(agentId);
     if (!state) return;
 
+    const { agent, latencyWindow } = state;
     state.lastSeen = Date.now();
 
-    if (!event.success && event.error) {
-      const errorType = classifyError(event.error);
-      this.errorCounts.set(errorType, (this.errorCounts.get(errorType) || 0) + 1);
+    // Auto-set status to running on activity
+    if (agent.status === 'idle' || agent.status === 'stopped') {
+      agent.status = 'running';
+      agent.currentTask = `Tool: ${event.toolName}`;
     }
+
+    // Update requests
+    agent.metrics.totalRequests++;
+    if (!event.success) {
+      agent.metrics.failedRequests++;
+      if (event.error) {
+        const errorType = classifyError(event.error);
+        this.errorCounts.set(errorType, (this.errorCounts.get(errorType) || 0) + 1);
+      }
+    }
+
+    // Update latency sliding window
+    if (event.latencyMs > 0) {
+      latencyWindow.push(event.latencyMs);
+      if (latencyWindow.length > 1000) latencyWindow.shift();
+
+      const sorted = [...latencyWindow].sort((a, b) => a - b);
+      agent.metrics.avgLatency = Math.round(sorted.reduce((s, v) => s + v, 0) / sorted.length);
+      agent.metrics.p50Latency = Math.round(calculatePercentile(sorted, 50));
+      agent.metrics.p95Latency = Math.round(calculatePercentile(sorted, 95));
+      agent.metrics.p99Latency = Math.round(calculatePercentile(sorted, 99));
+    }
+
+    // Update success rate
+    agent.metrics.successRate = parseFloat(
+      (((agent.metrics.totalRequests - agent.metrics.failedRequests) / agent.metrics.totalRequests) * 100).toFixed(1)
+    );
   }
 
   processActivity(agentId: string, event: RawActivityEvent): Activity | null {
@@ -284,8 +313,8 @@ export class LiveDataManager {
     const now = new Date();
     const timeStr = formatTime(now);
 
-    // Mark agents as stopped if not seen for 30 seconds
-    const cutoff = Date.now() - 30000;
+    // Mark agents as stopped if not seen for 5 minutes
+    const cutoff = Date.now() - 300000;
     for (const state of this.agents.values()) {
       if (state.lastSeen < cutoff && state.agent.status !== 'stopped') {
         state.agent.status = 'stopped';
